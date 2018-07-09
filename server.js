@@ -25,9 +25,9 @@ var port = 3000;
 app.get('/', function(request, response){
     response.send("Get request received at '/'");
 });
-app.get('/quotes', function(request, response){
-    console.log("Get a list of all quotes as json");
-    //response.json(quotes);
+app.get('/quotes/:id', function(request, response){
+    console.log("return quote with the ID: " + request.params.id);
+    response.send("Return quote with the ID: " + request.params.id);
     if(request.query.year){
         response.send("Return a list of quotes from the year: " + request.query.year);
     }
