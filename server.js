@@ -27,7 +27,7 @@ app.get('/', function(request, response){
 });
 app.get('/quotes', function(request, response){
     console.log("Get a list of all quotes as json");
-    response.send("Return quote with the ID: " + request.params.id);
+  //  response.send("Return quote with the ID: " + request.params.id);
     if(request.query.year){
         response.send("Return a list of quotes from the year: " + request.query.year);
     }
