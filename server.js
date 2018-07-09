@@ -27,13 +27,13 @@ app.get('/', function(request, response){
 });
 app.get('/quotes', function(request, response){
     console.log("Get a list of all quotes as json");
-    response.json(quotes);
+    //response.json(quotes);
     if(request.query.year){
         response.send("Return a list of quotes from the year: " + request.query.year);
-      }
-      else{
-          response.json(quotes);
-      }
+    }
+    else{
+        response.json(quotes);
+    }
 });
 app.listen(port, function(){
     console.log('Express app listening on port ' + port);
