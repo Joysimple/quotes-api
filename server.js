@@ -25,8 +25,8 @@ var port = 3000;
 app.get('/', function(request, response){
     response.send("Get request received at '/'");
 });
-app.get('/quotes/:id', function(request, response){
-    console.log("return quote with the ID: " + request.params.id);
+app.get('/quotes', function(request, response){
+    console.log("Get a list of all quotes as json");
     response.send("Return quote with the ID: " + request.params.id);
     if(request.query.year){
         response.send("Return a list of quotes from the year: " + request.query.year);
@@ -34,6 +34,10 @@ app.get('/quotes/:id', function(request, response){
     else{
         response.json(quotes);
     }
+});
+app.get('/quotes/:id', function(request, response){
+    console.log("return quote with the ID: " + request.params.id);
+    response.send("Return quote with the ID: " + request.params.id);
 });
 app.listen(port, function(){
     console.log('Express app listening on port ' + port);
