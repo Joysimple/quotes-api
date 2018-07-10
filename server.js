@@ -21,6 +21,8 @@ var quotes = [
 var express = require('express');
 var app = express();
 var port = 3000;
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(request, response){
     response.send("Get request received at '/'");
@@ -38,6 +40,10 @@ app.get('/quotes', function(request, response){
 app.get('/quotes/:id', function(request, response){
     console.log("return quote with the ID: " + request.params.id);
     response.send("Return quote with the ID: " + request.params.id);
+});
+app.post('/quotes', function(request, response){
+    console.log("Insert a new quote: " + req.body.quote);
+    response.json(request.body);
 });
 app.listen(port, function(){
     console.log('Express app listening on port ' + port);
