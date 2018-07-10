@@ -42,7 +42,7 @@ app.get('/quotes/:id', function(request, response){
     response.send("Return quote with the ID: " + request.params.id);
 });
 app.post('/quotes', function(request, response){
-    console.log("Insert a new quote: " + req.body.quote);
+    console.log("Insert a new quote: " + request.body.quote);
     response.json(request.body);
 });
 app.listen(port, function(){
