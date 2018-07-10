@@ -39,7 +39,6 @@ app.get('/quotes/:id', function(request, response){
     console.log("return quote with the ID: " + request.params.id);
     response.send("Return quote with the ID: " + request.params.id);
 });
-
 app.listen(port, function(){
     console.log('Express app listening on port ' + port);
 });
