@@ -50,4 +50,29 @@ app.post('/quotes', function(request, response){
 app.listen(port, function(){
     console.log('Express app listening on port ' + port);
 });
-
+app.get('/quotes', function(request, response){
+    if(request.query.year){
+        db.all('SELECT * FROM quotes WHERE year = ?', [request.query.year], function(err, rows){
+            if(err){
+                res.send(err.message);
+            }
+            else{
+                console.log("Return a list of quotes from the year: " + request.query.year);
+                response.json(rows);
+            }
+        });
+    }
+    else{
+        db.all('SELECT * FROM quotes', function processRows(err, rows){
+            if(err){
+                response.send(err.message);
+            }
+            else{
+                for( var i = 0; i < rows.length; i++){
+                    console.log(rows[i].quote);
+                }
+                response.json(rows);
+            }
+        });
+    }
+});
